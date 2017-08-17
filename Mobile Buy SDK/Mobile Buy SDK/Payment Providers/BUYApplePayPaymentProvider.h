@@ -25,6 +25,7 @@
 //
 
 @import UIKit;
+@import PassKit;
 #import "BUYPaymentProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -73,6 +74,14 @@ extern NSString *const BUYApplePayPaymentProviderId;
  *  @return YES if the Setup Apple Pay button should be shown
  */
 - (BOOL)canShowApplePaySetup;
+
+@end
+
+#if TARGET_OS_WATCH
+@interface BUYApplePayPaymentProvider () <PKPaymentAuthorizationControllerDelegate>
+#else
+@interface BUYApplePayPaymentProvider () <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationControllerDelegate>
+#endif
 
 @end
 

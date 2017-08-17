@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 //
 
-@import PassKit;
-
 #import "BUYApplePayPaymentProvider.h"
 #import "BUYCheckout.h"
 #import "BUYApplePayAuthorizationDelegate.h"
@@ -40,9 +38,9 @@ typedef void (^BUYAddressUpdateCompletion)(PKPaymentAuthorizationStatus, NSArray
 typedef void (^BUYShippingMethodCompletion)(PKPaymentAuthorizationStatus, NSArray<PKPaymentSummaryItem *> * _Nonnull);
 
 #if TARGET_OS_WATCH
-@interface BUYApplePayPaymentProvider () <PKPaymentAuthorizationControllerDelegate>
+@interface BUYApplePayPaymentProvider ()
 #else
-@interface BUYApplePayPaymentProvider () <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationControllerDelegate>
+@interface BUYApplePayPaymentProvider ()
 #endif
 
 @property (nonatomic, strong) BUYShop *shop;
