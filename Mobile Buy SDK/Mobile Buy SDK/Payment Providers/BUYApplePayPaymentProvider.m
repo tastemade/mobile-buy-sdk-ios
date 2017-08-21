@@ -266,7 +266,7 @@ typedef void (^BUYShippingMethodCompletion)(PKPaymentAuthorizationStatus, NSArra
 	
 	BUYStatus status = (self.paymentAuthorizationStatus == PKPaymentAuthorizationStatusSuccess) ? BUYStatusComplete : BUYStatusFailed;
 	if ([self.delegate respondsToSelector:@selector(paymentProvider:didCompleteCheckout:withStatus:)]) {
-		[self.delegate paymentProvider:self didCompleteCheckout:self.checkout withStatus:status];
+		[self.delegate paymentProvider:self didCompleteCheckout:self.applePayAuthorizationDelegate.checkout withStatus:status];
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:BUYPaymentProviderDidCompleteCheckoutNotificationKey object:self];
 	
